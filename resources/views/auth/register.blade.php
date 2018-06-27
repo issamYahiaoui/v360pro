@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            Already have an account? <a href="{{url('1')}}" class="text-info m-l-5"><b>Sign In</b></a>
+                            Already have an account? <a href="{{route('login')}}" class="text-info m-l-5"><b>Sign In</b></a>
                         </div>
                     </div>
                 </form>
