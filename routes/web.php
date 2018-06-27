@@ -20,3 +20,6 @@ Auth::routes();
 
 Route::resource('agents', 'AgentController');
 Route::resource('tours', 'TourController');
+Route::put('me', 'UserController@updateProfile');
+Route::put('tours/edit/{id}', 'TourController@updateTour');
+Route::get('me', 'UserController@show');

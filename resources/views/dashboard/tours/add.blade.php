@@ -3,6 +3,7 @@
 
 @section('content')
     <div class="row justify-content-center">
+
         @if(Session::has('success'))
             <div id="alert" class="alert alert-success text-center col-md-12">
 
@@ -20,7 +21,7 @@
 
                 <div class="row justify-content-center">
                     <form style="width: 100%" class="form-horizontal" method="POST" action="{{ url('tours') }}">
-
+  @csrf
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Agent</label>
                            <div class=" col-md-5">
@@ -43,13 +44,13 @@
 
                         </div>
                         <div class="form-group row">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Adress</label>
+                            <label for=""  class="col-sm-3 text-right control-label col-form-label">Address</label>
 
                             <div class="col-md-5">
-                                <input  type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"   placeholder="" name="country" value="{{ old('country') }}" required> </div>
-                            @if ($errors->has('country'))
+                                <input  type="text" class="form-control{{ $errors->has('adr') ? ' is-invalid' : '' }}"   placeholder="" name="adr" value="{{ old('adr') }}" required> </div>
+                            @if ($errors->has('adr'))
                                 <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
+                                        <strong>{{ $errors->first('adr') }}</strong>
                                     </span>
                             @endif
                         </div>
@@ -60,7 +61,7 @@
                             </div>
                             <div class="row col-md-4 " style="display: flex ; justify-content: space-between">
 
-                                <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Save</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-t-10">Save</button>
                                 <button type="reset" class="btn btn-outline-danger waves-effect waves-light m-t-10">Cancel</button>
 
                             </div>

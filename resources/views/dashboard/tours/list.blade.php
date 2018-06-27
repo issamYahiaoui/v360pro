@@ -61,7 +61,7 @@
                                 <td class="text-center">{{$model->agent()->name}}</td>
                                 <td class="text-center">{{$model->agent()->phone}}</td>
                                 <td class="text-center">{{$model->adr}}</td>
-                                <td class="text-center">{{$model->createdAt}}</td>
+                                <td class="text-center">{{$model->created_at}}</td>
                                 <td class="text-center">{{$model->status}}</td>
 
 
@@ -75,17 +75,13 @@
                                     </a>
                                     </form>
 
-                                    <form action="{{url('tours/'.$model->id)}}" method="POST" >
-                                    @method('PUT')
-                                    @csrf
-                                    <button type="submit"
-                                    class="btn btn-block btn-outline-info"
-                                    >
+                                    <form action="">
+                                        <a href="{{url('tours/'.$model->id.'/edit')}}" class="btn btn-block btn-outline-info">
                                     <span class="btn-label">
                                     <i class="fa fa-edit"></i>
                                     </span>
-                                    Edit
-                                    </button>
+                                            Edit
+                                        </a>
                                     </form>
 
                                     <form action="{{url('tours/'.$model->id)}}" method="POST" >
@@ -136,31 +132,31 @@
                 {
                     extend: 'copy',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3,4 ]
                     }
                 },
                 {
                     extend: 'excel',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3,4 ]
                     }
                 },
                 {
                     extend: 'pdf',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3,4 ]
                     }
                 },
                 {
                     extend: 'csv',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3,4 ]
                     }
                 },
                 {
                     extend: 'print',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3 ]
+                        columns: [ 0, 1, 2, 3,4 ]
                     }
                 }
             ],

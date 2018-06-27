@@ -2,5 +2,5 @@
 
 
 @section('content')
-    This is some text within a card block.
+    Welcome TO V360 PRO Dashboard  !
 @endsection

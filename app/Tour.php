@@ -17,9 +17,11 @@ class Tour extends Model
 
 
     public function agent(){
-        return Agent::where('id',$this->agent_id) ;
+        $agent =  Agent::where('id',$this->agent_id)->first() ;
+
+        return $agent ;
     }
     public function user(){
-        return User::where('id',$this->user_id) ;
+        return User::where('id',$this->user_id)->first() ;
     }
 }

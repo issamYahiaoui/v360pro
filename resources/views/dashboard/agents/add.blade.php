@@ -54,7 +54,7 @@
                        <div class="form-group row">
                            <label for="" class="col-sm-3 text-right control-label col-form-label">Email</label>
                            <div class="col-md-5">
-                               <input  type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"   placeholder="" name="name" value="{{ old('email') }}" required> </div>
+                               <input  type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"   placeholder="" name="email" value="{{ old('email') }}" required> </div>
                            @if ($errors->has('email'))
                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -69,7 +69,7 @@
                            </div>
                            <div class="row col-md-4 " style="display: flex ; justify-content: space-between">
 
-                                   <button type="submit" class="btn btn-info waves-effect waves-light m-t-10">Save</button>
+                                   <button type="submit" class="btn btn-success waves-effect waves-light m-t-10">Save</button>
                                    <button type="reset" class="btn btn-outline-danger waves-effect waves-light m-t-10">Cancel</button>
 
                            </div>

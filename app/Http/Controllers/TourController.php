@@ -56,7 +56,7 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-        // create a nationality
+        // create aTour
         $rules = [
             'agent_id' => 'required',
             'adr' => 'required',
@@ -64,6 +64,7 @@ class TourController extends Controller
         ];
 
         $this->validate($request, $rules);
+        //dd('aee');
         Tour::create([
             'agent_id' => $request->get('agent_id'),
             'adr' => $request->get('adr'),
@@ -88,7 +89,7 @@ class TourController extends Controller
         return view('dashboard.tours.show',[
             'active'=>'Tours',
             'title'=> "Show V360 PRO",
-            'tour' => $tour
+            'model' => $tour
         ]);
     }
 
@@ -101,10 +102,12 @@ class TourController extends Controller
     public function edit($id)
     {
         //
+        $tour =  Tour::find($id) ;
         // show edit form
         return view('dashboard.tours.edit',[
             'active'=>'Tours',
             'title'=> "Edit V360 PRO",
+            'model' => $tour
         ]);
     }
 
@@ -126,7 +129,7 @@ class TourController extends Controller
 
         $this->validate($request, $rules);
 
-        Age::find($id)->update([
+        Tour::find($id)->update([
             'agent_id' => $request->get('agent_id'),
             'user_id' => Auth::user()->id,
             'shotOn' => $request->get('shotOn'),
@@ -143,7 +146,40 @@ class TourController extends Controller
 
         return Redirect::back();
     }
+    public function updateTour(Request $request, $id)
+    {
 
+        //update a nationality
+        $rules = [
+            'agent_id' => 'required',
+
+        ];
+
+        $this->validate($request, $rules);
+
+        $agent = Agent::find($request->get('agent_id')) ;
+
+
+        if ($request->has('agent_name')) $agent->name = $request->get('agent_name') ;
+        if ($request->has('agent_phone')) $agent->phone = $request->get('agent_phone') ;
+        if ($request->has('agent_email')) $agent->email = $request->get('agent_email') ;
+        $agent->update() ;
+
+        Tour::find($id)->update([
+            'agent_id' => $request->get('agent_id'),
+            'user_id' => Auth::user()->id,
+            'shotOn' => $request->get('shotOn'),
+            'photographerName' => $request->get('shotCompletedOn'),
+            'processorCompletedOn' => $request->get('shotCompletedOn'),
+            'processorName' => $request->get('shotCompletedOn'),
+            'link' => $request->get('link'),
+            'embedCode' => $request->get('embedCode'),
+
+        ]);
+        Session::Flash('success',"Operation has successfully finished");
+
+        return Redirect::back();
+    }
     /**
      * Remove the specified resource from storage.
      *
