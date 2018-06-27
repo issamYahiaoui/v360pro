@@ -1,6 +1,6 @@
-@extends('dashboard_layout.master')
+@extends('layouts.dashboard_layout')
 
 
 @section('content')
-Blank page
+    This is some text within a card block.
 @endsection
