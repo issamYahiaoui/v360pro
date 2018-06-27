@@ -18,3 +18,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::resource('agents', 'AgentController');
+Route::resource('tours', 'TourController');
