@@ -64,7 +64,7 @@
                                 <td class="text-center">{{$model->agent()->phone}}</td>
                                 <td class="text-center">{{$model->adr}}</td>
                                 <td class="text-center">{{$model->created_at}}</td>
-                                <td class="text-center">{{$model->status}}</td>
+                                <td class="text-center">{{$model->state}}</td>
 
 
                                 <td class="text-center" style="display: flex ; justify-content: center">

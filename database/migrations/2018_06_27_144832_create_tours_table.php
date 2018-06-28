@@ -26,7 +26,7 @@ class CreateToursTable extends Migration
             $table->string('processor_name')->nullable();
             $table->string('link')->nullable();
             $table->string('embed_code')->nullable();
-            $table->string('state')->nullable();
+            $table->string('state')->nullable()->default('Incomplete');
 
             $table->timestamps();
         });
