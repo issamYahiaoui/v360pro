@@ -180,5 +180,26 @@
                 }
 
         });
+
+        $('input[type=search]').on('keyup',function(){
+            var size = $('#agentTable tr').length
+            if (size >= 2 ){
+                if($('#agentTable tr').text() ==="NameEmailPhoneCountryActionsNo matching records found"){
+                    $('#nbrTour').val(0)
+                    console.log('aw')
+                }else{
+
+                    $('#nbrTour').val(size -1)
+                }
+            }else{
+
+                $('#nbrTour').val(size -2)
+
+            }
+
+            console.log('size',size )
+            console.log('text',$('#agentTable tr').text() )
+
+        })
     </script>
     @endsection
