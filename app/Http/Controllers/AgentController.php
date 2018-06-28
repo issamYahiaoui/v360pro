@@ -57,7 +57,7 @@ class AgentController extends Controller
     {
         // create a nationality
         $rules = [
-            'phone' => 'required|unique:agent',
+            'phone' => 'required|unique:agents',
             'name' => 'required',
             'email' => 'required',
             'country' => 'required',
