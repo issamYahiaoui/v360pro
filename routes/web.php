@@ -27,6 +27,10 @@ Route::get('me', 'UserController@show');
 
 
 
+
+Route::get('register', function() {
+   abort(404) ;
+});
 Route::get('*', function() {
     return view('/') ;
 });

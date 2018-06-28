@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin' ,
             'phone' => '0664421310' ,
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456') ,
+            'role' => 'superadmin'
         ]) ;
        $agent1 =  \App\Agent::create([
             'name' => 'Agent 1' ,
