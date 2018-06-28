@@ -117,7 +117,7 @@
                                 <textarea name="embedCode" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" ></textarea>
                             </div>
                         </div>
-                        <input type="text" name="agent_id" value="{{$model->id}}" hidden>
+                        <input type="text" name="agent_id" value="{{$model->agent()->id}}" hidden>
 
                         <div class="form-group row">
                             <div class="col-md-4">

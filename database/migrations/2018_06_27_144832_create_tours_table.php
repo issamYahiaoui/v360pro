@@ -16,7 +16,9 @@ class CreateToursTable extends Migration
         Schema::create('tours', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('agent_id')->unsigned();
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');;
             $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->string('adr')->nullable();
             $table->string('shot_on')->nullable();
             $table->string('processor_completed_on')->nullable();
