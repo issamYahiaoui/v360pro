@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Agent;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Redirect;
@@ -40,10 +41,10 @@ class AgentController extends Controller
     public function create()
     {
         // show add form
-        return view('dashboard.agents.add',[
-            'active'=>'agents',
-            'title'=> "Add agent",
-        ]);
+            return view('dashboard.agents.add',[
+                'active'=>'agents',
+                'title'=> "Add User",
+            ]);
     }
 
     /**
@@ -85,7 +86,11 @@ class AgentController extends Controller
      */
     public function show($id)
     {
-        //
+        $agent = Agent::find($id) ;
+        if (!$agent) abort(404);
+        return \response()->json([
+            'agent' => $agent
+        ],200) ;
     }
 
     /**

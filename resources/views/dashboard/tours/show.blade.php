@@ -13,6 +13,11 @@
         @endif
         <div class="col-md-12">
             <div class="card card-body">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <a href="{{url('tours/')}}"  class="btn btn-outline-info waves-effect waves-light"><i class="fa fa-arrow-circle-left"></i> Back to Tours List</a>
+                    </div>
+                </div>
                 <div class="row col-md-11 justify-content-center">
                     <h3 class="box-title m-b-0">Show V360 PRO Data</h3>
                     <br><br><br> <br>
@@ -54,34 +59,34 @@
                         <div class="form-group row">
                             <label for="" class="col-md-3 text-right control-label col-form-label">Shot On</label>
                             <div class="col-md-2">
-                                <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->user()->shotOn}}" disabled> </div>
-                            <label for="" class="col-md-3 text-right control-label col-form-label">Processor Completed On</label>
+                                <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->shot_on}}" disabled> </div>
+                            <label for="" class="col-md-3 text-right control-label col-form-label">Photographer Name</label>
                             <div class="col-md-3">
-                                <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->processorCompletedOn}}" disabled> </div>
+                                <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->photographer_name}}" disabled> </div>
 
                         </div>
                         <div class="form-group row">
 
                                 <label for="" class="col-md-3 text-right control-label col-form-label">Processor Completed On</label>
                                 <div class="col-md-2">
-                                    <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->processorCompletedOn}}" disabled> </div>
+                                    <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->processor_completed_on}}" disabled> </div>
                                 <label for="" class="col-md-3 text-right control-label col-form-label">Processor Name</label>
                                 <div class="col-md-3">
-                                    <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->processorName}}" disabled> </div>
+                                    <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->processor_name}}" disabled> </div>
 
                         </div>
                         <div class="form-group row">
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Link</label>
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->link}}" disabled> </div>
-                            <button type="button" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+                                <input  type="text" class="form-control" id="link_show"  placeholder="" name="" value="{{ $model->link}}" disabled> </div>
+                            <button type="button" id="copy_show" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
                         </div>
                         <div class="form-group row">
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
                             <div class="col-md-5">
-                                <textarea name="" class="form-control" id="" cols="30" value="{{ $model->embedCode}}" rows="3" disabled></textarea>
+                                <textarea name="" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" disabled></textarea>
                             </div>
                         </div>
 
@@ -98,4 +103,30 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script>
+        console.log('Js is On!')
+
+        $('#embed_code').val("{{$model->embed_code}}")
+
+        $('#copy_show').on('click', function () {
+
+            console.log('Copy is On!')
+            /* Get the text field */
+            var copyText = $("#link_show");
+            copyText.prop('disabled', false)
+
+            /* Select the text field */
+            copyText.select();
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            copyText.prop('disabled', true)
+
+            /* Alert the copied text */
+            console.log("Copied the text: " + copyText.value);
+        })
+    </script>
 @endsection

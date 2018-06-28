@@ -12,7 +12,7 @@ class Tour extends Model
     //
 
     protected $fillable = [
-        'agent_id', 'user_id', 'adr', 'processorName' , 'photographerName' , 'shotOn' , 'processorCompletedOn'
+        'agent_id', 'user_id', 'adr', 'processorName' , 'photographerName' , 'shotOn' , 'processorCompletedOn' , 'link', 'embedCode'
     ];
 
 

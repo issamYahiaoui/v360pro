@@ -29,6 +29,18 @@
 
             <div class="col-sm-12">
                 <div class="white-box">
+                    <div class="row col-md-12" style="display: flex; justify-content: space-between">
+                        <div class="col-md-3">
+                            <a href="{{url('agents/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Agent</a>
+                        </div>
+
+                        <div class="col-md-5">
+                            <label class="text-center" for="nbrTour">Number Of Agents</label>
+                            <input id="nbrTour" value="{{count($list)}}" type="text">
+                        </div>
+
+                    </div>
+                    <br> <br>
                     <div class="table-responsive"></div>
                      <table id="agentTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -54,40 +66,50 @@
 
 
                                 <td class="text-center" style="display: flex ; justify-content: center">
-                                    {{--<form action="">--}}
-                                        {{--<a href="{{url('agents/'.$model->id)}}" class="btn btn-block btn-outline-success">--}}
-                                        {{--<span class="btn-label">--}}
-                                        {{--<i class="fa fa-eye"></i>--}}
-                                     {{--</span>--}}
-                                            {{--View--}}
-                                        {{--</a>--}}
-                                    {{--</form>--}}
-
-                                    {{--<form action="{{url('agent/'.$model->id)}}" method="POST" >--}}
-                                        {{--@method('PUT')--}}
-                                        {{--@csrf--}}
-                                        {{--<button type="submit"--}}
-                                                {{--class="btn btn-block btn-outline-info"--}}
-                                        {{-->--}}
-                                     {{--<span class="btn-label">--}}
-                                        {{--<i class="fa fa-edit"></i>--}}
-                                     {{--</span>--}}
-                                            {{--Edit--}}
-                                        {{--</button>--}}
-                                    {{--</form>--}}
-
-                                    <form action="{{url('agents/'.$model->id)}}" method="POST" >
-                                        @method('DELETE')
-                                        @csrf
+                                    <div class="">
                                         <button type="submit"
                                                 class="btn btn-block btn-outline-danger"
+                                                data-toggle="modal"
+                                                data-target="#delete{{$model->id}}"
                                         >
-                                     <span class="btn-label">
-                                        <i class="fa fa-remove"></i>
-                                     </span>
+                                             <span class="btn-label">
+                                                <i class="fa fa-remove"></i>
+                                             </span>
                                             DELETE
                                         </button>
-                                    </form>
+
+                                        <div class="modal fade" id="delete{{$model->id}}" tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel1">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span
+                                                                    aria-hidden="true">&times;</span>
+                                                        </button>
+
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{url('agents/'.$model->id)}}" method="POST" >
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <div class="row justify-content-center">
+                                                                <h5>Are You Sure To Delete This Agent</h5>
+                                                            </div>
+                                                            <div class="row  " style="display: flex ; justify-content: space-around">
+
+                                                                <button type="submit" class="btn btn-danger waves-effect waves-light m-t-10">DELETE</button>
+                                                                <button  data-dismiss="modal" class="btn btn-outline-danger waves-effect waves-light m-t-10">Cancel</button>
+
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </td>
                             </tr>

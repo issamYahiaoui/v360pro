@@ -25,7 +25,12 @@ class UserController extends Controller
      */
     public function index()
     {
-
+        //show nationalities list
+        return view('dashboard.users.list',[
+            'list'=> User::all(),
+            'active'=>'users',
+            'title'=> "Users",
+        ]);
     }
 
     /**
@@ -36,6 +41,11 @@ class UserController extends Controller
     public function create()
     {
 
+        return view('dashboard.users.add',[
+            'active'=>'users',
+            'title'=> "Add User",
+
+        ]);
     }
 
     /**
@@ -47,6 +57,27 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+
+
+        $rules = [
+            'phone' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+        ];
+
+        $this->validate($request, $rules);
+
+       $user =  User::create([
+            'name' => $request->get('name'),
+            'phone' => $request->get('phone'),
+            'role' => $request->get('role'),
+            'password' => bcrypt($request->get('password')),
+
+        ]);
+
+
+        Session::Flash('success',"Operation has successfully finished");
+        return Redirect::back();
+
     }
 
     /**
@@ -57,8 +88,10 @@ class UserController extends Controller
      */
     public function show()
     {
-        //
+
+
         $user =  Auth::user() ;
+        if (!$user) abort(404);
         // show show form
         return view('auth.profile',[
             'active'=>'profile',
