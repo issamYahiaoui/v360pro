@@ -35,8 +35,8 @@
                         </div>
 
                         <div class="col-md-5">
-                            <label class="text-center" for="nbrTour">Number Of Tours</label>
-                            <input id="nbrTour" value="{{count($list)}}" type="text">
+                            <label class="text-center"  for="nbrTour">Number Of Tours</label>
+                            <input id="nbrTour"  value="{{count($list)}}" type="text">
                         </div>
 
                     </div>
@@ -64,7 +64,7 @@
                                 <td class="text-center">{{$model->agent()->phone}}</td>
                                 <td class="text-center">{{$model->adr}}</td>
                                 <td class="text-center">{{$model->created_at}}</td>
-                                <td class="text-center">{{$model->status}}</td>
+                                <td class="text-center">{{$model->state}}</td>
 
 
                                 <td class="text-center" style="display: flex ; justify-content: center">
@@ -160,7 +160,7 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script>
-        $('#tourTable').DataTable({
+        var table = $('#tourTable').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 {
@@ -201,5 +201,28 @@
                 }
 
         });
+
+
+
+        $('input[type=search]').on('keyup',function(){
+            var size = $('#tourTable tr').length
+            if (size >= 2 ){
+                if($('#tourTable tr').text() ==="Agent NameContact NoListing InfoDate CreatedStatusActionsNo matching records found"){
+                    $('#nbrTour').val(0)
+                    console.log('aw')
+                }else{
+
+                    $('#nbrTour').val(size -1)
+                }
+            }else{
+
+                    $('#nbrTour').val(size -2)
+
+            }
+
+            console.log('size',size )
+            console.log('text', )
+
+        })
     </script>
 @endsection

@@ -179,7 +179,14 @@ class TourController extends Controller
             $tour->embed_code = $request->get('embedCode') ;
             $tour->user_id = Auth::user()->id ;
             //dd($tour) ;
-            $tour->update();
+        if($tour->agent_id && $tour->shot_on && $tour->photographer_name &&  $tour->processor_name &&  $tour->link
+            && $tour->agent_id  &&  $agent->name &&  $agent->phone &&  $agent->email ){
+            $tour->state = "Complete" ;
+        }
+
+           if($tour->link) $tour->embed_code = "<iframe src =\"https://link.com\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"></iframe>";
+
+        $tour->update();
 
 
         Session::Flash('success',"Operation has successfully finished");

@@ -82,26 +82,23 @@
 
                     </div>
                     <div class="form-group m-b-0">
+                        @if(count($errors->all())>0)
+                            <div class="alert alert-danger text-center col-md-12 ">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                </button>
+                                <ul class="list-unstyled text-center">
+                                    @foreach($errors->all() as $error)
+                                        <li class="text-center">
+                                            {{ $error }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                </form>
 
-                    </div>
-                </form>
-                <form class="form-horizontal" id="recoverform" action="index.html">
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <h3>Recover Password</h3>
-                            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Email"> </div>
-                    </div>
-                    <div class="form-group text-center m-t-20">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
