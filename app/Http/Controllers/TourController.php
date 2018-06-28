@@ -85,6 +85,7 @@ class TourController extends Controller
     public function show($id)
     {
         $tour =  Tour::find($id) ;
+        if (!$tour) abort(404);
         // show show form
         return view('dashboard.tours.show',[
             'active'=>'Tours',
@@ -149,6 +150,8 @@ class TourController extends Controller
     public function updateTour(Request $request, $id)
     {
 
+
+       // dd($request) ;
         //update a nationality
         $rules = [
             'agent_id' => 'required',
@@ -165,19 +168,21 @@ class TourController extends Controller
         if ($request->has('agent_email')) $agent->email = $request->get('agent_email') ;
         $agent->update() ;
 
-        Tour::find($id)->update([
-            'agent_id' => $request->get('agent_id'),
-            'user_id' => Auth::user()->id,
-            'shotOn' => $request->get('shotOn'),
-            'photographerName' => $request->get('shotCompletedOn'),
-            'processorCompletedOn' => $request->get('shotCompletedOn'),
-            'processorName' => $request->get('shotCompletedOn'),
-            'link' => $request->get('link'),
-            'embedCode' => $request->get('embedCode'),
+       $tour = Tour::find($id) ;
 
-        ]);
+            $tour->agent_id = $request->get('agent_id') ;
+            $tour->shot_on = $request->get('shotOn') ;
+            $tour->photographer_name = $request->get('photographerName') ;
+            $tour->processor_completed_on = $request->get('processorCompletedOn') ;
+            $tour->processor_name = $request->get('processorName') ;
+            $tour->link = $request->get('link') ;
+            $tour->embed_code = $request->get('embedCode') ;
+            $tour->user_id = Auth::user()->id ;
+            //dd($tour) ;
+            $tour->update();
+
+
         Session::Flash('success',"Operation has successfully finished");
-
         return Redirect::back();
     }
     /**
@@ -190,7 +195,6 @@ class TourController extends Controller
     {
 
         Tour::find($id)->delete() ;
-
         return Redirect::back();
     }
 }

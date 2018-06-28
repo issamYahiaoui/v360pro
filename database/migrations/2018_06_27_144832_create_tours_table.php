@@ -18,12 +18,12 @@ class CreateToursTable extends Migration
             $table->integer('agent_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('adr')->nullable();
-            $table->string('shotOn')->nullable();
-            $table->string('processorCompletedOn')->nullable();
-            $table->string('photographerName')->nullable();
-            $table->string('processorName')->nullable();
+            $table->string('shot_on')->nullable();
+            $table->string('processor_completed_on')->nullable();
+            $table->string('photographer_name')->nullable();
+            $table->string('processor_name')->nullable();
             $table->string('link')->nullable();
-            $table->string('embedCode')->nullable();
+            $table->string('embed_code')->nullable();
             $table->string('state')->nullable();
 
             $table->timestamps();

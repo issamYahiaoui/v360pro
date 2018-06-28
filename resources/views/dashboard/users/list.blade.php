@@ -31,25 +31,23 @@
                 <div class="white-box">
                     <div class="row col-md-12" style="display: flex; justify-content: space-between">
                         <div class="col-md-3">
-                            <a href="{{url('tours/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Tour</a>
+                            <a href="{{url('users/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New User</a>
                         </div>
 
                         <div class="col-md-5">
-                            <label class="text-center" for="nbrTour">Number Of Tours</label>
+                            <label class="text-center" for="nbrTour">Number Of Users</label>
                             <input id="nbrTour" value="{{count($list)}}" type="text">
                         </div>
 
                     </div>
                     <br> <br>
-                    <div class="table-responsive">
-                    <table id="tourTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                    <div class="table-responsive"></div>
+                     <table id="agentTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th class="text-center">Agent Name</th>
-                            <th class="text-center">Contact No</th>
-                            <th class="text-center">Listing Info</th>
-                            <th class="text-center">Date Created</th>
-                            <th class="text-center">Status</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Role</th>
                             <th class="text-center">Actions</th>
 
                         </tr>
@@ -60,30 +58,23 @@
 
                             <tr>
 
-                                <td class="text-center">{{$model->agent()->name}}</td>
-                                <td class="text-center">{{$model->agent()->phone}}</td>
-                                <td class="text-center">{{$model->adr}}</td>
-                                <td class="text-center">{{$model->created_at}}</td>
-                                <td class="text-center">{{$model->status}}</td>
+                                <td class="text-center">{{$model->name}}</td>
+                                <td class="text-center">{{$model->phone}}</td>
+                                <td class="text-center">
+                                    <span
+                                            @if($model->role === "admin")
+                                            class="label label-info"
+                                                    @else
+                                            class="label label-success"
+                                            @endif
+
+                                    >
+                                        {{$model->role}}
+                                    </span>
+                                </td>
 
 
                                 <td class="text-center" style="display: flex ; justify-content: center">
-                                    <form action="">
-                                    <a href="{{url('tours/'.$model->id)}}" class="btn btn-block btn-outline-success">
-                                    <span class="btn-label">
-                                    <i class="fa fa-eye"></i>
-                                    </span>
-                                    View
-                                    </a>
-                                    </form>
-                                    <form action="">
-                                        <a href="{{url('tours/'.$model->id.'/edit')}}"   class=" btn btn-block btn-outline-info">
-                                    <span class="btn-label">
-                                    <i class="fa fa-edit"></i>
-                                    </span>
-                                            Edit
-                                        </a>
-                                    </form>
                                     <div class="">
                                         <button type="submit"
                                                 class="btn btn-block btn-outline-danger"
@@ -108,11 +99,11 @@
 
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{url('tours/'.$model->id)}}" method="POST" >
+                                                        <form action="{{url('users/'.$model->id)}}" method="POST" >
                                                             @method('DELETE')
                                                             @csrf
                                                             <div class="row justify-content-center">
-                                                                <h5>Are You Sure To Delete This Tour</h5>
+                                                                <h5>Are You Sure To Delete This User</h5>
                                                             </div>
                                                             <div class="row  " style="display: flex ; justify-content: space-around">
 
@@ -129,14 +120,12 @@
                                         </div>
                                     </div>
 
-
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    </div>
-                 </div>
+                </div>
 
             </div>
 
@@ -144,7 +133,6 @@
         </div>
 
     </div>
-
 
 
 @endsection
@@ -160,46 +148,42 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script>
-        $('#tourTable').DataTable({
+        $('#agentTable').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 {
                     extend: 'copy',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2 ]
                     }
                 },
                 {
                     extend: 'excel',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2 ]
                     }
                 },
                 {
                     extend: 'pdf',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2]
                     }
                 },
                 {
                     extend: 'csv',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2]
                     }
                 },
                 {
                     extend: 'print',
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4 ]
+                        columns: [ 0, 1, 2 ]
                     }
                 }
             ],
-            extend: 'print',
-            exportOptions:
-                {
-                    columns: [0, 1, 2]
-                }
+
 
         });
     </script>
-@endsection
+    @endsection

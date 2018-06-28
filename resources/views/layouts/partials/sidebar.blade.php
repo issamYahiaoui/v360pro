@@ -12,7 +12,15 @@
                     </a>
 
                 </li>
-
+                 @if(\Illuminate\Support\Facades\Auth::user()->role === "superadmin")
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-user"></i>
+                            <span class="hide-menu">Users</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{url('users')}}">Users</a></li>
+                            <li><a href="{{url('users/create')}}">Add User</a></li>
+                        </ul>
+                    </li>
+                     @endif
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i>
                         <span class="hide-menu">V 360 PRO</span></a>
                     <ul aria-expanded="false" class="collapse">

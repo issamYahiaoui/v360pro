@@ -13,6 +13,11 @@
         @endif
         <div class="col-md-12">
             <div class="card card-body">
+                <div class="row ">
+                    <div class="col-md-3">
+                        <a href="{{url('agents/')}}"  class="btn btn-outline-info waves-effect waves-light"><i class="fa fa-arrow-circle-left"></i> Back to Agents List</a>
+                    </div>
+                </div>
                 <div class="row col-md-11 justify-content-center">
                     <h3 class="box-title m-b-0">Add New Agent</h3>
                     <br><br><br> <br>
@@ -20,16 +25,16 @@
 
                <div class="row justify-content-center">
                    <form style="width: 100%" class="form-horizontal" method="POST" action="{{ url('agents') }}">
+                       @csrf
                        <div class="form-group row">
                            <label for="" class="col-sm-3 text-right control-label col-form-label">Country</label>
-
-                           <div class="col-md-5">
-                               <input  type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"   placeholder="" name="country" value="{{ old('country') }}" required> </div>
-                           @if ($errors->has('country'))
-                               <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                           @endif
+                           <div class=" col-md-5">
+                               <select name="country" class="form-control">
+                                   <option value="Singapore">Singapore</option>
+                                   <option value="Malaysia">Malaysia</option>
+                                   <option value="Indonesia">Indonesia</option>
+                               </select>
+                           </div>
                        </div>
                        <div class="form-group row">
                            <label for="" class="col-sm-3 text-right control-label col-form-label">Name</label>
