@@ -8,7 +8,7 @@
 
                 {{Session::get('success')}}
                 <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
-                            class="fa fa-minus"></i></span>
+                            class="fa fa-close"></i></span>
             </div>
         @endif
         <div class="col-md-12">

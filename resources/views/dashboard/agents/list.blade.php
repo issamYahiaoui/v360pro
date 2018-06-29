@@ -7,7 +7,7 @@
             @if(count($errors->all())>0)
                 <div class="alert alert-danger text-center col-md-12 ">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true"><i class="fa fa-minus"></i></span>
+                        <span aria-hidden="true"><i class="fa fa-close"></i></span>
                     </button>
                     <ul class="list-unstyled text-center">
                         @foreach($errors->all() as $error)
@@ -23,7 +23,7 @@
 
                     {{Session::get('success')}}
                     <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
-                                class="fa fa-minus"></i></span>
+                                class="fa fa-close"></i></span>
                 </div>
             @endif
 
