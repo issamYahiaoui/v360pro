@@ -25,7 +25,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //show nationalities list
+
         return view('dashboard.agents.list',[
             'list'=> Agent::all(),
             'active'=>'agents',
@@ -55,7 +55,7 @@ class AgentController extends Controller
      */
     public function store(Request $request)
     {
-        // create a nationality
+
         $rules = [
             'phone' => 'required|unique:agents',
             'name' => 'required',

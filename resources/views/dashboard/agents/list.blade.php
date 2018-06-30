@@ -50,10 +50,10 @@
                      <table id="agentTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th class="text-center">Name</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Phone</th>
                             <th class="text-center">Country</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Phone</th>
+                            <th class="text-center">Email</th>
                             <th class="text-center">Actions</th>
 
                         </tr>
@@ -63,13 +63,10 @@
                         @foreach($list as $model)
 
                             <tr>
-
-                                <td class="text-center">{{$model->name}}</td>
-                                <td class="text-center">{{$model->email}}</td>
-                                <td class="text-center">{{$model->phone}}</td>
                                 <td class="text-center">{{$model->country}}</td>
-
-
+                                <td class="text-center">{{$model->name}}</td>
+                                <td class="text-center">{{$model->phone}}</td>
+                                <td class="text-center">{{$model->email}}</td>
                                 <td class="text-center" style="display: flex ; justify-content: center">
                                     <div class="">
                                         <button type="submit"

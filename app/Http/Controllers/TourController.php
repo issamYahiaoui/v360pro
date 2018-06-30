@@ -26,7 +26,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        //show nationalities list
+
         return view('dashboard.tours.list',[
             'list'=> Tour::all(),
             'active'=>'Tours',
@@ -121,7 +121,7 @@ class TourController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //update a nationality
+
         $rules = [
             'agent_id' => 'required',
             'adr' => 'required',
@@ -152,7 +152,7 @@ class TourController extends Controller
 
 
        // dd($request) ;
-        //update a nationality
+
         $rules = [
             'agent_id' => 'required',
 

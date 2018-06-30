@@ -148,7 +148,7 @@ class UserController extends Controller
     {
 
 
-        //update a nationality
+
         $rules = [
             'phone' => 'required',
 
