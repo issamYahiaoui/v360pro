@@ -115,6 +115,7 @@
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
                             <div class="col-md-5">
                                 <textarea name="embedCode" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" ></textarea>
+                                <button type="button" id="copy_edit_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
                             </div>
                         </div>
                         <input type="text" name="agent_id" value="{{$model->agent()->id}}" hidden>
@@ -160,6 +161,24 @@
            /* Alert the copied text */
            console.log("Copied the text: " + copyText.value);
        })
+        $('#copy_edit_code').on('click', function () {
+
+            console.log('Copy is On!')
+            /* Get the text field */
+            var copyText = $("#embed_code");
+            copyText.prop('disabled', false)
+
+            /* Select the text field */
+            copyText.select();
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            copyText.prop('disabled', true)
+
+            /* Alert the copied text */
+            console.log("Copied the text: " + copyText.value);
+        })
 
     </script>
 @endsection
