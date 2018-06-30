@@ -29,18 +29,23 @@
 
             <div class="col-sm-12">
                 <div class="white-box">
+                    <br> <br>
                     <div class="row col-md-12" style="display: flex; justify-content: space-between">
-                        <div class="col-md-3">
+                        <div class="">
+
                             <a href="{{url('tours/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Tour</a>
                         </div>
-
-                        <div class="col-md-5">
-                            <label class="text-center"  for="nbrTour">Number Of Tours</label>
-                            <input id="nbrTour"  value="{{count($list)}}" type="text">
+                        <div class="">
+                            <label class="text-center" for="nbrTour">Number Of Tours</label>
+                            <input id="nbrTour" value="{{count($list)}}" type="text">
+                        </div>
+                        <div class="">
+                            <label class="text-center" for="nbrTour">Search</label>
+                            <input id="searchInput" type="text">
                         </div>
 
                     </div>
-                    <br> <br>
+                    <br>
                     <div class="table-responsive">
                     <table id="tourTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -204,7 +209,13 @@
 
 
 
-        $('input[type=search]').on('keyup',function(){
+        $('.dt-button').hide()
+
+        $('#searchInput').on( 'keyup', function () {
+            table.search( this.value ).draw();
+        } );
+        $('#tourTable_filter').hide()
+        $('#searchInput').on('keyup',function(){
             var size = $('#tourTable tr').length
             if (size >= 2 ){
                 if($('#tourTable tr').text() ==="Agent NameContact NoListing InfoDate CreatedStatusActionsNo matching records found"){

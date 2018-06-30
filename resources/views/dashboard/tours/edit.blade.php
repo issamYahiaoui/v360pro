@@ -115,8 +115,9 @@
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
                             <div class="col-md-5">
                                 <textarea name="embedCode" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" ></textarea>
-                                <button type="button" id="copy_edit_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
                             </div>
+                            <button type="button" id="copy_edit_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+
                         </div>
                         <input type="text" name="agent_id" value="{{$model->agent()->id}}" hidden>
 
@@ -145,9 +146,16 @@
         console.log('Js is On!')
         $('#photographer_name').val("{{$model->photographer_name}}")
         $('#processor_name').val("{{$model->processor_name}}")
-        $('#embed_code').val("{{$model->embed_code}}")
+        var code = "{{$model->embed_code}}"
 
-       $('#copy').on('click', function () {
+        if(code === "fill"){
+            var msg = "<iframe src =\"https://link.com\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"><iframe/>";
+            $('#embed_code').val(unescape(msg))
+        }
+        console.log(unescape(code))
+
+
+        $('#copy').on('click', function () {
            console.log('Copy is On!')
            /* Get the text field */
            var copyText = $("#link");

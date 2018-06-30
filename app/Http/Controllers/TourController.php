@@ -184,9 +184,9 @@ class TourController extends Controller
             $tour->state = "Complete" ;
         }
 
-           if($tour->link) $tour->embed_code = "<iframe src =\"https://link.com\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"></iframe>";
+          if($tour->link) $tour->embed_code = "fill";
 
-        $tour->update();
+            $tour->update();
 
 
         Session::Flash('success',"Operation has successfully finished");

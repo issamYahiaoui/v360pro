@@ -79,16 +79,18 @@
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Link</label>
                             <div class="col-md-5">
-                                <input  type="text" class="form-control" id="link_show"  placeholder="" name="" value="{{ $model->link}}" disabled> </div>
+                                <input  type="text" class="form-control" id="link_show"  placeholder="" name="" value="{{ $model->link}}" disabled>
+                            </div>
                             <button type="button" id="copy_show" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row ">
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
-                            <div class="col-md-5">
-                                <textarea name="" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" disabled></textarea>
-                                <button type="button" id="copy_show_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+                            <div class="col-md-5" >
+                                <textarea name="" class="form-control" id="embed_code" cols="10" value="{{ $model->embed_code}}" rows="2" disabled></textarea>
                             </div>
+                            <button type="button" id="copy_show_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+
                         </div>
 
                         <div class="form-group row justify-content-center">
@@ -109,7 +111,14 @@
     <script>
         console.log('Js is On!')
 
-        $('#embed_code').val("{{$model->embed_code}}")
+        var code = "{{$model->embed_code}}"
+
+        if(code === "fill"){
+            var msg = "<iframe src =\"https://link.com\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"><iframe/>";
+            $('#embed_code').val(unescape(msg))
+        }
+        console.log(unescape(code))
+
 
         $('#copy_show').on('click', function () {
 

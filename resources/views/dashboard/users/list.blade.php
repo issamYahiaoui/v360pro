@@ -185,5 +185,9 @@
 
 
         });
+        $('.dt-button').hide()
+
+
+
     </script>
     @endsection

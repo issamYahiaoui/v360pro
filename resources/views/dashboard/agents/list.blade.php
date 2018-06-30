@@ -29,18 +29,23 @@
 
             <div class="col-sm-12">
                 <div class="white-box">
+                    <br> <br>
                     <div class="row col-md-12" style="display: flex; justify-content: space-between">
-                        <div class="col-md-3">
-                            <a href="{{url('agents/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Agent</a>
-                        </div>
+                        <div class="">
 
-                        <div class="col-md-5">
-                            <label class="text-center" for="nbrTour">Number Of Agents</label>
+                            <a href="{{url('agents/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Tour</a>
+                        </div>
+                        <div class="">
+                            <label class="text-center" for="nbrTour">Number Of Tours</label>
                             <input id="nbrTour" value="{{count($list)}}" type="text">
+                        </div>
+                        <div class="">
+                            <label class="text-center" for="nbrTour">Search</label>
+                            <input id="searchInput_agent" type="text">
                         </div>
 
                     </div>
-                    <br> <br>
+                    <br>
                     <div class="table-responsive"></div>
                      <table id="agentTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
@@ -139,7 +144,7 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script>
-        $('#agentTable').DataTable({
+      var table =   $('#agentTable').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 {
@@ -180,8 +185,15 @@
                 }
 
         });
+        $('.dt-button').hide()
 
-        $('input[type=search]').on('keyup',function(){
+
+        $('#searchInput_agent').on( 'keyup', function () {
+            table.search( this.value ).draw();
+        } );
+        $('#agentTable_filter').hide()
+
+        $('#searchInput_agent').on('keyup',function(){
             var size = $('#agentTable tr').length
             if (size >= 2 ){
                 if($('#agentTable tr').text() ==="NameEmailPhoneCountryActionsNo matching records found"){
