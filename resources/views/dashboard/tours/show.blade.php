@@ -112,9 +112,9 @@
         console.log('Js is On!')
 
         var code = "{{$model->embed_code}}"
-
+        var link = "{{$model->link}}"
         if(code === "fill"){
-            var msg = "<iframe src =\"https://link.com\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"><iframe/>";
+            var msg = "<iframe src =\""+link+"\" height=\"640\" width=\"100%\"  allowfullscreen=\"\" frameborder=\"0\"><iframe/>";
             $('#embed_code').val(unescape(msg))
         }
         console.log(unescape(code))
