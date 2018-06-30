@@ -1,12 +1,11 @@
 <div class="row page-titles">
-    <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">{{$title}}</h4>
+    <div class="col-md-6 align-content-around">
+        <span class=""><span href="javascript:void(0)">Dashboard </span><span  class="text-info" style="">  > {{$title}}</span></span>
     </div>
-    <div class="col-md-7 align-self-center text-right">
-        <div class="d-flex justify-content-end align-items-center">
+    <div class="col-md-6 align-self-center text-center">
+        <div class="d-flex justify-content-start ">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard </a></li>
-                <li class="breadcrumb-item active">{{$title}}</li>
+                <h4 class="text-themecolor">{{$title}}</h4>
             </ol>
         </div>
     </div>
