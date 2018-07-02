@@ -61,13 +61,13 @@
 
                         </div>
                         <div class="form-group row">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Created At</label>
+                            <label for="" class="col-sm-3 text-right control-label col-form-label">Created On</label>
                             <div class="col-md-5">
                                 <input  type="text" class="form-control"   placeholder="" name="created_at" value="{{ $model->created_at}}" disabled> </div>
 
                         </div>
                         <div class="form-group row">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Creator Name</label>
+                            <label for="" class="col-sm-3 text-right control-label col-form-label">Creator By</label>
                             <div class="col-md-5">
                                 <input  type="text" class="form-control"   placeholder="" name="user_name" value="{{ $model->user()->name}}" disabled> </div>
 
@@ -76,7 +76,7 @@
                             <label for="" class="col-md-3 text-right control-label col-form-label">Shot On</label>
                             <div class="col-md-2">
                                 <input  type="date" class="form-control"   placeholder="" name="shotOn" value="{{ $model->shot_on}}" > </div>
-                            <label for="" class="col-md-3 text-right control-label col-form-label">Photographer Name</label>
+                            <label for="" class="col-md-3 text-right control-label col-form-label">Shot By</label>
 
                             <div class=" col-md-3">
                                 <select name="photographerName" id="photographer_name" class="form-control">
