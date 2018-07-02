@@ -15,7 +15,7 @@
             <div class="card card-body">
                 <div class="row ">
                     <div class="col-md-3">
-                        <a href="{{url('users/')}}"  class="btn btn-outline-info waves-effect waves-light"><i class="fa fa-arrow-circle-left"></i> Back to Users List</a>
+                        <a href="{{url('users/')}}"  class="btn btn-outline-danger waves-effect waves-light"><i class="fa fa-arrow-circle-left"></i> Back to Users List</a>
                     </div>
                 </div>
 

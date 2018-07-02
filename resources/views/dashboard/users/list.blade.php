@@ -31,7 +31,7 @@
                 <div class="white-box">
                     <div class="row col-md-12" style="display: flex; justify-content: space-between">
                         <div class="col-md-3">
-                            <a href="{{url('users/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New User</a>
+                            <a href="{{url('users/create')}}"  class="btn btn-danger d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New User</a>
                         </div>
 
                         <div class="col-md-5">

@@ -33,10 +33,10 @@
                     <div class="row col-md-12" style="display: flex; justify-content: space-between">
                         <div class="">
 
-                            <a href="{{url('agents/create')}}"  class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Tour</a>
+                            <a href="{{url('agents/create')}}"  class="btn btn-danger d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Add New Agent</a>
                         </div>
                         <div class="">
-                            <label class="text-center" for="nbrTour">Number Of Tours</label>
+                            <label class="text-center" for="nbrTour">Number Of Agents</label>
                             <input id="nbrTour" value="{{count($list)}}" type="text">
                         </div>
                         <div class="">

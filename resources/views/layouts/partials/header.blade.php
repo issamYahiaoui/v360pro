@@ -1,6 +1,6 @@
 <div class="row page-titles">
     <div class="col-md-6 align-content-around">
-        <span class=""><span href="javascript:void(0)">Dashboard </span><span  class="text-info" style="">  > {{$title}}</span></span>
+        <span class=""><span href="javascript:void(0)">Dashboard </span><span  class="text-danger" style="">  > {{$title}}</span></span>
     </div>
     <div class="col-md-6 align-self-center text-center">
         <div class="d-flex justify-content-start ">
