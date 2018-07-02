@@ -32,7 +32,7 @@
 <div class="preloader">
     <div class="loader">
         <div class="loader__figure"></div>
-        <p class="loader__label">V 360 PRO</p>
+        <p class="loader__label">V360Agent.com</p>
     </div>
 </div>
 <!-- ============================================================== -->

@@ -35,8 +35,8 @@
                         </div>
 
                         <div class="col-md-5">
-                            <label class="text-center" for="nbrTour">Number Of Users</label>
-                            <input id="nbrTour" value="{{count($list)}}" type="text">
+                            <label class="text-center" for="nbrTour">Number Of Users :</label>
+                            <input id="nbrTour" value="{{count($list)}}" type="text" disabled>
                         </div>
 
                     </div>
