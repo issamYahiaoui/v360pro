@@ -45,19 +45,19 @@
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Agent name</label>
 
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="agent_name" value="{{ $model->agent()->name}}" required> </div>
+                                <input disabled  type="text" class="form-control"   placeholder="" name="agent_name" value="{{ $model->agent()->name}}" required> </div>
 
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="agent_phone" value="{{$model->agent()->phone}}" required> </div>
+                                <input disabled  type="text" class="form-control"   placeholder="" name="agent_phone" value="{{$model->agent()->phone}}" required> </div>
 
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label"> Email </label>
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="agent_email" value="{{ $model->agent()->email }}" required> </div>
+                                <input  disabled type="text" class="form-control"   placeholder="" name="agent_email" value="{{ $model->agent()->email }}" required> </div>
 
                         </div>
                         <div class="form-group row">
