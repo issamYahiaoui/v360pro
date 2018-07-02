@@ -93,7 +93,7 @@
                             <label for="" class="col-md-3 text-right control-label col-form-label">Processor Completed On</label>
                             <div class="col-md-2">
                                 <input  type="date" class="form-control"   placeholder="" name="processorCompletedOn" value="{{ $model->processor_completed_on}}" > </div>
-                            <label for="" class="col-md-3 text-right control-label col-form-label">Processor Name</label>
+                            <label for="" class="col-md-3 text-right control-label col-form-label">Processed By</label>
 
                             <div class=" col-md-3">
                                 <select name="processorName" id="processor_name" class="form-control">
@@ -108,15 +108,15 @@
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Link</label>
                             <div class="col-md-5">
                                 <input  type="text" class="form-control"  id="link" placeholder="" name="link" value="{{ $model->link}}" > </div>
-                            <button type="button" id="copy" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+                            <button hidden type="button" id="copy" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
                         </div>
-                        <div class="form-group row">
+                        <div hidden class="form-group row">
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
-                            <div class="col-md-5">
+                            <div hidden class="col-md-5">
                                 <textarea name="embedCode" class="form-control" id="embed_code" cols="30" value="{{ $model->embed_code}}" rows="3" ></textarea>
                             </div>
-                            <button type="button" id="copy_edit_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+                            <button  type="button" id="copy_edit_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
 
                         </div>
                         <input type="text" name="agent_id" value="{{$model->agent()->id}}" hidden>
