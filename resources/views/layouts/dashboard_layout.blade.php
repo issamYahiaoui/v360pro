@@ -13,7 +13,8 @@
     <title>V360 PRO</title>
     <!-- Custom CSS -->
     <link href="{{asset('dashboard/css/style.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/node_modules/sweetalert/sweetalert.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('dashboard/node_modules/select2/dist/css/select2.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('dashboard/node_modules/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -122,8 +123,8 @@
 <script src="{{asset('dashboard/node_modules/sparkline/jquery.sparkline.min.js')}}"></script>
 <!--Custom JavaScript -->
 <script src="{{asset('dashboard/js/custom.min.js')}}"></script>
-<script src="{{asset('node_modules/sweetalert/sweetalert.min.js')}}"></script>
-<script src="{{asset('node_modules/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
+<script src="{{asset('dashboard/node_modules/select2/dist/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('dashboard/node_modules/bootstrap-select/bootstrap-select.min.js')}}" type="text/javascript"></script>
 
 @yield('js')
 

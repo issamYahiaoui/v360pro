@@ -30,16 +30,18 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Agent Phone</label>
                            <div class=" col-md-5">
-                               <select onchange="fillFields()" name="agent_id" id="agentSelect" class="form-control">
-                                   <option value=""  ></option>
-
-                               @foreach(\App\Agent::all() as $agent)
+                               <select onchange="fillFields()" name="agent_id" id="agentSelect" class="select2 form-control custom-select select2-hidden-accessible" style="width: 100%; height:36px;" tabindex="-1" aria-hidden="true">
+                                   <option>Select ...</option>
+                                   @foreach(\App\Agent::all() as $agent)
                                        <option value="{{$agent->id}}">
                                            {{$agent->phone}}
                                        </option>
 
                                    @endforeach
+
+
                                </select>
+
                            </div>
 
                         </div>
@@ -47,14 +49,14 @@
                             <label for=""  class="col-sm-3 text-right control-label col-form-label">Agent Name</label>
 
                             <div class="col-md-5">
-                                <input  type="text" class="form-control" id="agent_name"   placeholder=""  value="" required> </div>
+                                <input  type="text" class="form-control" id="agent_name"   placeholder=""  value="" required disabled> </div>
 
                         </div>
                         <div class="form-group row">
                             <label for=""  class="col-sm-3 text-right control-label col-form-label">Agent Email</label>
 
                             <div class="col-md-5">
-                                <input  type="text" class="form-control" id="agent_email"  placeholder=""  value="" required> </div>
+                                <input  type="text" class="form-control" id="agent_email"  placeholder=""  value="" required disabled> </div>
 
                         </div>
                         <div class="form-group row">
@@ -95,10 +97,14 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('js')
     <script>
+        $(document).ready(function() {
+            $("#agentSelect").select2();
+        });
         function fillFields(){
             console.log('select value Changed !')
             var agent_id = $("#agentSelect").val();
