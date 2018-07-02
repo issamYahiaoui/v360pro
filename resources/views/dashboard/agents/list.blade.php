@@ -67,7 +67,15 @@
                                 <td class="text-center">{{$model->name}}</td>
                                 <td class="text-center">{{$model->phone}}</td>
                                 <td class="text-center">{{$model->email}}</td>
-                                <td class="text-center" style="display: flex ; justify-content: center">
+                                <td class="text-center" style="display: flex ; justify-content: space-around">
+                                    <div>
+                                        <a href="{{url('agents/edit/'.$model->id)}}"   class=" btn btn-block btn-outline-info">
+                                    <span class="btn-label">
+                                    <i class="fa fa-edit"></i>
+                                    </span>
+                                            Edit
+                                        </a>
+                                    </div>
                                     <div class="">
                                         <button type="submit"
                                                 class="btn btn-block btn-outline-danger"

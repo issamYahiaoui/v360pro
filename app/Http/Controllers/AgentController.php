@@ -84,6 +84,17 @@ class AgentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function updateAgent($id){
+        $agent = Agent::find($id) ;
+        if (!$agent) abort(404);
+        return view('dashboard.agents.edit',[
+            'model' => $agent ,
+            'active'=>'agents',
+            'title'=> "Edit Agent",
+        ]) ;
+    }
     public function show($id)
     {
         $agent = Agent::find($id) ;
@@ -114,6 +125,29 @@ class AgentController extends Controller
     public function update(Request $request, $id)
     {
 
+        $rules = [
+            'phone' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'country' => 'required',
+
+        ];
+
+        $this->validate($request, $rules);
+        $agent = Agent::find($id)->update([
+            'phone' => $request->get('phone'),
+            'email' => $request->get('email'),
+            'name' => $request->get('name'),
+            'country' => $request->get('country'),
+
+        ]);
+
+        dd($agent) ;
+
+
+        Session::Flash('success', "Operation has successfully finished");
+
+        return Redirect::back();
     }
 
     /**

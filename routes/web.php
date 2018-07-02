@@ -23,6 +23,7 @@ Route::resource('tours', 'TourController');
 Route::resource('users', 'UserController');
 Route::put('me', 'UserController@updateProfile');
 Route::put('tours/edit/{id}', 'TourController@updateTour');
+Route::get('agents/edit/{id}', 'AgentController@updateAgent');
 Route::get('me', 'UserController@show');
 
 
