@@ -45,7 +45,7 @@
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
-                    <h3 class="box-title m-b-20">Login to V360 PRO</h3>
+                    <h3 class="box-title m-b-20">Login to V360PRO</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input  type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"  placeholder="Phone" name="phone" value="{{ old('phone') }}" required> </div>
