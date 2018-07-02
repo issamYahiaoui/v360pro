@@ -37,7 +37,7 @@
                         </div>
                         <div class="">
                             <label class="text-center" for="nbrTour">Number Of Agents</label>
-                            <input id="nbrTour" value="{{count($list)}}" type="text">
+                            <input id="nbrTour" value="{{count($list)}}" type="text" disabled>
                         </div>
                         <div class="">
                             <label class="text-center" for="nbrTour">Search</label>
