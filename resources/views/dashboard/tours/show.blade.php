@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row col-md-11 justify-content-center">
-                    <h3 class="box-title m-b-0">Show V360 PRO Data</h3>
+                    <h3 class="box-title m-b-0">Show V360PRO Data</h3>
                     <br><br><br> <br>
                 </div>
 

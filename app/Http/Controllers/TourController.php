@@ -30,7 +30,7 @@ class TourController extends Controller
         return view('dashboard.tours.list',[
             'list'=> Tour::all(),
             'active'=>'Tours',
-            'title'=> "V360 PRO"
+            'title'=> "V360PRO"
         ]);
     }
 
@@ -89,7 +89,7 @@ class TourController extends Controller
         // show show form
         return view('dashboard.tours.show',[
             'active'=>'Tours',
-            'title'=> "Show V360 PRO",
+            'title'=> "Show V360PRO",
             'model' => $tour
         ]);
     }
@@ -107,7 +107,7 @@ class TourController extends Controller
         // show edit form
         return view('dashboard.tours.edit',[
             'active'=>'Tours',
-            'title'=> "Edit V360 PRO",
+            'title'=> "Edit V360PRO",
             'model' => $tour
         ]);
     }
