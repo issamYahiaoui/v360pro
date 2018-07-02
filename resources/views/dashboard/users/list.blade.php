@@ -38,6 +38,10 @@
                             <label class="text-center" for="nbrTour">Number Of Users :</label>
                             <input id="nbrTour" value="{{count($list)}}" type="text" disabled>
                         </div>
+                        <div class="">
+                            <label class="text-center" for="searchInput">Search</label>
+                            <input id="searchInput_agent" type="text">
+                        </div>
 
                     </div>
                     <br> <br>
@@ -148,7 +152,7 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <script>
-        $('#agentTable').DataTable({
+        var table =$('#agentTable').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 {
@@ -186,6 +190,11 @@
 
         });
         $('.dt-button').hide()
+        $('#searchInput_agent').on( 'keyup', function () {
+            console.lo
+            table.search( this.value ).draw();
+        } );
+        $('#agentTable_filter').hide()
 
 
 

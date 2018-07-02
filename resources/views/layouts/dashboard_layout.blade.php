@@ -96,7 +96,7 @@
     <!-- footer -->
     <!-- ============================================================== -->
     <footer class="footer">
-        © 2018 Eliteadmin by themedesigner.in
+        V360Agent.com , A Division of V360 Group
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->
