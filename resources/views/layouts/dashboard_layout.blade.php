@@ -25,7 +25,7 @@
     @yield('css')
 </head>
 
-<body class="skin-blue fixed-layout">
+<body class="skin-red  fixed-layout">
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
