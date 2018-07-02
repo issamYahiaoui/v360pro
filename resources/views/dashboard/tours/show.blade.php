@@ -45,22 +45,20 @@
 
                         </div>
                         <div class="form-group row">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Created At</label>
-                            <div class="col-md-5">
+                            <label for="" class="col-md-3 text-right control-label col-form-label">Created On</label>
+                            <div class="col-md-2">
                                 <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->created_at}}" disabled> </div>
-
-                        </div>
-                        <div class="form-group row">
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Creator Name</label>
-                            <div class="col-md-5">
+                            <label for="" class="col-md-3 text-right control-label col-form-label">Created By</label>
+                            <div class="col-md-2">
                                 <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->user()->name}}" disabled> </div>
 
                         </div>
+
                         <div class="form-group row">
                             <label for="" class="col-md-3 text-right control-label col-form-label">Shot On</label>
                             <div class="col-md-2">
                                 <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->shot_on}}" disabled> </div>
-                            <label for="" class="col-md-3 text-right control-label col-form-label">Photographer Name</label>
+                            <label for="" class="col-md-3 text-right control-label col-form-label">shot By</label>
                             <div class="col-md-3">
                                 <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->photographer_name}}" disabled> </div>
 
@@ -70,7 +68,7 @@
                                 <label for="" class="col-md-3 text-right control-label col-form-label">Processor Completed On</label>
                                 <div class="col-md-2">
                                     <input  type="date" class="form-control"   placeholder="" name="" value="{{ $model->processor_completed_on}}" disabled> </div>
-                                <label for="" class="col-md-3 text-right control-label col-form-label">Processor Name</label>
+                                <label for="" class="col-md-3 text-right control-label col-form-label">Processed By</label>
                                 <div class="col-md-3">
                                     <input  type="text" class="form-control"   placeholder="" name="" value="{{ $model->processor_name}}" disabled> </div>
 
