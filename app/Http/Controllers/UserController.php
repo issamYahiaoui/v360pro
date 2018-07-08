@@ -14,6 +14,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('customer');
         $this->middleware('superadmin')->except(['updateProfile','show']);
 
 

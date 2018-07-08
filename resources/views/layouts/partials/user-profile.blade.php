@@ -2,7 +2,13 @@
     <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('dashboard/images/icon/staff-w.png')}}" alt="user" class=""> <span class="hidden-md-down">{{\Illuminate\Support\Facades\Auth::user()->name}}&nbsp;<i class="fa fa-angle-down"></i></span> </a>
     <div class="dropdown-menu dropdown-menu-right animated flipInY">
         <!-- text-->
-        <a href="{{url('me')}}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+        @if(\Illuminate\Support\Facades\Auth::user()->role === "customer")
+            <a href="{{url('agent/me')}}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+
+    @else
+            <a href="{{url('me')}}" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+
+    @endif
         <!-- text-->
         <a class="dropdown-item" href="{{ route('logout') }}"
            onclick="event.preventDefault();

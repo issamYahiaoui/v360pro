@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Tour;
+use App\Agent;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -28,6 +29,9 @@ class User extends Authenticatable
     ];
 
     public function tours(){
-        return Tour::where('user_id',$this->id) ;
+        return Tour::where('user_id',$this->id)->get() ;
+    }
+    public function agent(){
+        return Agent::where('user_id',$this->id)->first() ;
     }
 }

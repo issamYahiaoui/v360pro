@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfSuperAdmin
+class RedirectIfCustomer
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class RedirectIfSuperAdmin
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::user()->role !== "superadmin" ) {
+        if (Auth::user()->role === "customer" ) {
             return redirect('/');
         }
 

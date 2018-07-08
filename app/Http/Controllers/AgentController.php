@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Agent;
+use App\Tour;
+use App\User;
 use http\Env\Response;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 class AgentController extends Controller
@@ -14,6 +17,8 @@ class AgentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('customer')->except(['myTours','myTour','updateAgent','updateProfil', 'showAgent']);
+
 
 
     }
@@ -47,6 +52,25 @@ class AgentController extends Controller
             ]);
     }
 
+    public function myTours(){
+
+        $agent = Agent::where('user_id' , Auth::user()->id)->first() ;
+        if (!$agent) abort(404) ;
+        return view('dashboard.agents.tours',[
+            'list'=> Tour::where('agent_id',$agent->id)->get(),
+            'active'=>'agents',
+            'title'=> "Tours",
+        ]) ;
+    }
+    public function myTour($id){
+
+        return view('dashboard.agents.show',[
+            'model'=> Tour::find($id),
+            'active'=>'agents',
+            'title'=> "Tours",
+        ]) ;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -57,18 +81,26 @@ class AgentController extends Controller
     {
 
         $rules = [
-            'phone' => 'required|unique:agents',
+            'phone' => 'required|unique:users',
             'name' => 'required',
             'email' => 'required',
             'country' => 'required',
+            'password' => 'required',
+
 
         ];
 
+        $user = User::create([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'first_login' => 1,
+            'phone' => $request->get('phone'),
+            'password' => bcrypt($request->get('password')),
+        ]) ;
+
         $this->validate($request, $rules);
         Agent::create([
-            'phone' => $request->get('phone'),
-            'email' => $request->get('email'),
-            'name' => $request->get('name'),
+            'user_id' => $user->id,
             'country' => $request->get('country'),
 
         ]);
@@ -103,6 +135,50 @@ class AgentController extends Controller
             'agent' => $agent
         ],200) ;
     }
+    public function showAgent()
+    {
+        $agent = Agent::where('user_id',Auth::user()->id)->first() ;
+        if (!$agent) abort(404);
+        return view('dashboard.agents.profile',[
+            'model' => $agent ,
+            'active'=>'agents',
+            'title'=> "Edit Profile",
+        ]) ;
+    }
+    public function updateProfil(Request $request, $id)
+    {
+
+
+        $rules = [
+            'phone' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'user_id' => 'required',
+            'password' => 'confirmed'
+
+        ];
+
+        $user = User::find($request->get('user_id')) ;
+
+        $user->update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+            'password' => bcrypt($request->get('password')),
+        ]) ;
+
+
+        $this->validate($request, $rules);
+        Agent::find($id)->create([
+            'user_id' => $user->id,
+            'country' => $request->get('country'),
+
+        ]);
+
+        Session::Flash('success', "Operation has successfully finished");
+
+        return Redirect::back();
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -126,24 +202,26 @@ class AgentController extends Controller
     {
 
         $rules = [
-            'phone' => 'required',
+            'phone' => 'required|unique:users',
             'name' => 'required',
             'email' => 'required',
             'country' => 'required',
+            'user_id' => 'required',
 
         ];
 
-        $this->validate($request, $rules);
-        $agent = Agent::find($id)->update([
-            'phone' => $request->get('phone'),
-            'email' => $request->get('email'),
+        $user = User::find($request->get('user_id'))->update([
             'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'phone' => $request->get('phone'),
+        ]) ;
+
+        $this->validate($request, $rules);
+        Agent::find($id)->create([
+            'user_id' => $user->id,
             'country' => $request->get('country'),
 
         ]);
-
-        dd($agent) ;
-
 
         Session::Flash('success', "Operation has successfully finished");
 

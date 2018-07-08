@@ -64,9 +64,9 @@
 
                             <tr>
                                 <td class="text-center">{{$model->country}}</td>
-                                <td class="text-center">{{$model->name}}</td>
-                                <td class="text-center">{{$model->phone}}</td>
-                                <td class="text-center">{{$model->email}}</td>
+                                <td class="text-center">{{$model->user()->name}}</td>
+                                <td class="text-center">{{$model->user()->phone}}</td>
+                                <td class="text-center">{{$model->user()->email}}</td>
                                 <td class="text-center" style="display: flex ; justify-content: space-around">
                                     <div>
                                         <a href="{{url('agents/edit/'.$model->id)}}"   class=" btn btn-block btn-outline-info">

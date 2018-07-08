@@ -65,8 +65,8 @@
 
                             <tr>
 
-                                <td class="text-center">{{$model->agent()->name}}</td>
-                                <td class="text-center">{{$model->agent()->phone}}</td>
+                                <td class="text-center">{{$model->agent()->user()->name}}</td>
+                                <td class="text-center">{{$model->agent()->user()->phone}}</td>
                                 <td class="text-center">{{$model->adr}}</td>
                                 <td class="text-center">{{$model->created_at}}</td>
                                 <td class="text-center">{{$model->state}}</td>

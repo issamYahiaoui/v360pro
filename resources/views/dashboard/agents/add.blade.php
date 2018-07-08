@@ -3,6 +3,20 @@
 
 @section('content')
     <div class="row justify-content-center">
+        @if(count($errors->all())>0)
+            <div class="alert alert-danger text-center col-md-12 ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                </button>
+                <ul class="list-unstyled text-center">
+                    @foreach($errors->all() as $error)
+                        <li class="text-center">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if(Session::has('success'))
             <div id="alert" class="alert alert-success text-center col-md-12">
 
@@ -66,6 +80,17 @@
                                     </span>
                            @endif
                        </div>
+                       <div class="form-group row">
+                           <label for="" class="col-sm-3 text-right control-label col-form-label">Password</label>
+                           <div class="col-md-5">
+                               <input id="password"  type="text" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"   placeholder="" name="password" value="ilovev360" required> </div>
+                           @if ($errors->has('password'))
+                               <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                           @endif
+                       </div>
+
 
 
                        <div class="form-group row">
@@ -86,4 +111,12 @@
             </div>
         </div>
     </div>
+    @endsection
+
+
+@section('js')
+    <script>
+        console.log('Js is on ')
+
+    </script>
     @endsection

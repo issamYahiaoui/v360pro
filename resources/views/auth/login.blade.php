@@ -45,9 +45,17 @@
             <div class="card-body">
                 <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                     @csrf
-                    <h3 class="box-title m-b-20">Login to V360Pro</h3>
-                    <div class="form-group ">
-                        <div class="col-xs-12">
+                    <h3 class="box-title m-b-20">Login to V360ProAgent.com</h3>
+                    <div class="form-group row">
+                        <div class="col-xs-2" style="width: 20% ; padding: 5px">
+                            <select class="form-control">
+                                <option value="+65">+65</option>
+                                <option value="+60">+60</option>
+                                <option value="+62">+62</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-8" style="width: 80% ;padding: 5px ">
+
                             <input  type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"  placeholder="Phone" name="phone" value="{{ old('phone') }}" required> </div>
                         @if ($errors->has('phone'))
                             <span class="invalid-feedback" role="alert">

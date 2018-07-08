@@ -41,23 +41,24 @@
                     <form style="width: 100%" class="form-horizontal" method="POST" action="{{ url('agents/'.$model->id) }}">
                         @csrf
                         @method('PUT')
+                        <input value="{{$model->user_id}}" name="user_id" type="text" hidden>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Name</label>
 
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="name" value="{{ $model->name}}" required> </div>
+                                <input  type="text" class="form-control"   placeholder="" name="name" value="{{ $model->user()->name}}" required> </div>
 
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Phone</label>
                             <div    class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="phone" value="{{$model->phone}}" required> </div>
+                                <input  type="text" class="form-control"   placeholder="" name="phone" value="{{$model->user()->phone}}" required> </div>
 
                         </div>
                         <div class="form-group row">
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Email </label>
                             <div class="col-md-5">
-                                <input  type="text" class="form-control"   placeholder="" name="email" value="{{ $model->email }}" required> </div>
+                                <input  type="text" class="form-control"   placeholder="" name="email" value="{{ $model->user()->email }}" required> </div>
 
                         </div>
 
