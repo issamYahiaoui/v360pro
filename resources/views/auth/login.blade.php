@@ -48,7 +48,7 @@
                     <h3 class="box-title m-b-20">Login to V360ProAgent.com</h3>
                     <div class="form-group row">
                         <div class="col-xs-2" style="width: 20% ; padding: 5px">
-                            <select class="form-control">
+                            <select name="code" class="form-control">
                                 <option value="+65">+65</option>
                                 <option value="+60">+60</option>
                                 <option value="+62">+62</option>

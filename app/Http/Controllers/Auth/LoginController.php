@@ -58,7 +58,14 @@ class LoginController extends Controller
         ];
 
         $user = User::where('phone', $request->get('phone'))->first() ;
+        if ($user->role === "customer"){
+            $agent = $user->agent() ;
+            if ($agent->country !== $this->getCountryFromCode($request->get('code'))){
+                $this->incrementLoginAttempts($request);
 
+                return $this->sendFailedLoginResponse($request);
+            }
+        }
 
         // Attempt to auth the user
         if (Auth::attempt($credentials)) {
@@ -74,6 +81,23 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+
+    private function getCountryFromCode($code){
+        switch ($code)
+        {
+            case '+65' :
+                return 'Singapore' ;
+
+            case '+62' :
+                return 'Indonesia' ;
+
+            case '+60' :
+                return 'Malaysia';
+
+
+        }
+
+    }
 
     protected function authenticated(Request $request, $user)
     {
