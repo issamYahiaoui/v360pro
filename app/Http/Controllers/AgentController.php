@@ -89,20 +89,28 @@ class AgentController extends Controller
 
 
         ];
+//        $user_exist = User::where('phone',$request->get('phone'));
+//        if ($user_exist) {
+//            return Redirect::back()->withErrors([
+//                'phone' => 'Phone number should be unique'
+//            ]) ->withInput();
+//        }
 
+
+        $this->validate($request, $rules);
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'first_login' => 1,
+
             'phone' => $request->get('phone'),
             'password' => bcrypt($request->get('password')),
-        ]) ;
+            'role' =>"customer",
 
-        $this->validate($request, $rules);
+        ]) ;
         Agent::create([
             'user_id' => $user->id,
             'country' => $request->get('country'),
-
+            'first_login' => 1,
         ]);
 
         Session::Flash('success', "Operation has successfully finished");
@@ -132,7 +140,8 @@ class AgentController extends Controller
         $agent = Agent::find($id) ;
         if (!$agent) abort(404);
         return \response()->json([
-            'agent' => $agent
+            'agent' => $agent ,
+            'user' =>$agent->user()
         ],200) ;
     }
     public function showAgent()
@@ -158,6 +167,10 @@ class AgentController extends Controller
 
         ];
 
+
+
+        $this->validate($request, $rules);
+
         $user = User::find($request->get('user_id')) ;
 
         $user->update([
@@ -167,8 +180,6 @@ class AgentController extends Controller
             'password' => bcrypt($request->get('password')),
         ]) ;
 
-
-        $this->validate($request, $rules);
         Agent::find($id)->create([
             'user_id' => $user->id,
             'country' => $request->get('country'),
@@ -202,7 +213,7 @@ class AgentController extends Controller
     {
 
         $rules = [
-            'phone' => 'required|unique:users',
+            'phone' => 'required',
             'name' => 'required',
             'email' => 'required',
             'country' => 'required',
@@ -210,14 +221,16 @@ class AgentController extends Controller
 
         ];
 
-        $user = User::find($request->get('user_id'))->update([
+
+        $this->validate($request, $rules);
+        $user = User::find($request->get('user_id')) ;
+        $user->update([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'phone' => $request->get('phone'),
         ]) ;
 
-        $this->validate($request, $rules);
-        Agent::find($id)->create([
+        Agent::find($id)->update([
             'user_id' => $user->id,
             'country' => $request->get('country'),
 
@@ -237,7 +250,11 @@ class AgentController extends Controller
     public function destroy($id)
     {
 
-        Agent::find($id)->delete() ;
+        $agent = Agent::find($id) ;
+        $user = $agent->user() ;
+        $agent->delete() ;
+        $user->delete() ;
+
 
         return Redirect::back();
     }

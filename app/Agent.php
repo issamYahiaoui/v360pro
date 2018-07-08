@@ -9,7 +9,7 @@ class Agent extends Model
 {
     //
     protected $fillable = [
-        'user_id', 'country'
+        'user_id', 'country' , 'first_login'
     ];
 
 
