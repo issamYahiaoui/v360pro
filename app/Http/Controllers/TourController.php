@@ -140,9 +140,6 @@ class TourController extends Controller
             'processorName' => $request->get('shotCompletedOn'),
             'link' => $request->get('link'),
             'embedCode' => $request->get('embedCode'),
-
-
-
         ]);
         Session::Flash('success',"Operation has successfully finished");
 
@@ -164,11 +161,6 @@ class TourController extends Controller
         $agent = Agent::find($request->get('agent_id')) ;
 
 
-        if ($request->has('agent_name')) $agent->name = $request->get('agent_name') ;
-        if ($request->has('agent_phone')) $agent->phone = $request->get('agent_phone') ;
-        if ($request->has('agent_email')) $agent->email = $request->get('agent_email') ;
-        $agent->update() ;
-
        $tour = Tour::find($id) ;
 
             $tour->agent_id = $request->get('agent_id') ;
@@ -181,7 +173,7 @@ class TourController extends Controller
             $tour->user_id = Auth::user()->id ;
             //dd($tour) ;
         if($tour->agent_id && $tour->shot_on && $tour->photographer_name &&  $tour->processor_name &&  $tour->link
-            && $tour->agent_id  &&  $agent->name &&  $agent->phone &&  $agent->email ){
+            && $tour->agent_id ){
             $tour->state = "Complete" ;
         }
 
