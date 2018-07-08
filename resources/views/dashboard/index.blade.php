@@ -12,7 +12,8 @@
         </div>
     @endif
 
-    @if(\Illuminate\Support\Facades\Auth::user()->agent()->first_login)
+    @if(\Illuminate\Support\Facades\Auth::user()->role ==="customer")
+        @if(\Illuminate\Support\Facades\Auth::user()->agent()->first_login)
        <div class="" hidden>
            {{$user  = \Illuminate\Support\Facades\Auth::user() }}
            {{ $agent = $user->agent() }}
@@ -26,6 +27,8 @@
             <span class="pull-right" data-dismiss="alert" aria-label="Close" aria-hidden="true"><i
                         class="fa fa-close"></i></span>
         </div>
+
+            @endif
         @endif
     Welcome TO V360 PRO Dashboard  !
 @endsection

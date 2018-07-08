@@ -34,7 +34,7 @@
                                    <option>Select ...</option>
                                    @foreach(\App\Agent::all() as $agent)
                                        <option value="{{$agent->id}}">
-                                           {{$agent->phone}}
+                                           {{$agent->user()->phone}}
                                        </option>
 
                                    @endforeach
@@ -112,9 +112,9 @@
             var url = base_url.concat(agent_id)
             console.log('url',url)
             $.get(url, function(data, status){
-                console.log(data.agent);
-                $("#agent_name").val(data.agent.name)
-                $("#agent_email").val(data.agent.email)
+                console.log(data.user);
+                $("#agent_name").val(data.user.name)
+                $("#agent_email").val(data.user.email)
             });
 
 
