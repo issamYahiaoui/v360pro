@@ -58,14 +58,17 @@ class LoginController extends Controller
         ];
 
         $user = User::where('phone', $request->get('phone'))->first() ;
-        if ($user->role === "customer"){
-            $agent = $user->agent() ;
-            if ($agent->country !== $this->getCountryFromCode($request->get('code'))){
-                $this->incrementLoginAttempts($request);
+        if ($user){
+            if ($user->role === "customer"){
+                $agent = $user->agent() ;
+                if ($agent->country !== $this->getCountryFromCode($request->get('code'))){
+                    $this->incrementLoginAttempts($request);
 
-                return $this->sendFailedLoginResponse($request);
+                    return $this->sendFailedLoginResponse($request);
+                }
             }
         }
+
 
         // Attempt to auth the user
         if (Auth::attempt($credentials)) {
