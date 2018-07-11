@@ -59,21 +59,14 @@
                         </div>
 
 
-                        <div class="form-group row">
 
-                            <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Link</label>
-                            <div class="col-md-5">
-                                <input  type="text" class="form-control" id="link_show"  placeholder="" name="" value="{{ $model->link}}" disabled>
-                            </div>
-                            <button type="button" id="copy_show" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
-                        </div>
-                        <div class="form-group row " hidden>
+                        <div class="form-group row " >
 
                             <label for="" class="col-sm-3 text-right control-label col-form-label">Embed Code</label>
-                            <div class="col-md-5" hidden >
-                                <textarea name="" class="form-control" id="embed_code" cols="10" value="{{ $model->embed_code}}" rows="2"  disabled></textarea>
+                            <div class="col-md-5"  >
+                                <textarea name="" class="form-control" id="embed_code" cols="10" rows="2"  disabled>{{ $model->embed_code}}</textarea>
                             </div>
-                            <button  hidden type="button" id="copy_show_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
+                            <button   type="button" id="copy_show_code" class="btn btn-secondary btn-circle btn-sm"><i class="fa fa-copy"></i> </button>
 
                         </div>
 
