@@ -29,7 +29,7 @@ class UserController extends Controller
     {
         //show nationalities list
         return view('dashboard.users.list',[
-            'list'=> User::all(),
+            'list'=> User::where('role','!=','customer')->get(),
             'active'=>'users',
             'title'=> "Users",
         ]);

@@ -59,7 +59,7 @@
 
                         <tbody>
                         @foreach($list as $model)
-                            @if($model->role !== "customer")
+
                             <tr>
 
                                 <td class="text-center">{{$model->name}}</td>
@@ -126,7 +126,7 @@
 
                                 </td>
                             </tr>
-                            @endif
+                        
                         @endforeach
                         </tbody>
                     </table>
