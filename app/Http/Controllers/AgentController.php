@@ -252,6 +252,12 @@ class AgentController extends Controller
 
         $agent = Agent::find($id) ;
         $user = $agent->user() ;
+        $tours = $agent->tours() ;
+        if ($tours) {
+            foreach ($tours as $tour) {
+                $tour->delete() ;
+            }
+        }
         $agent->delete() ;
         $user->delete() ;
 

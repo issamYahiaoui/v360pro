@@ -14,7 +14,7 @@ class Agent extends Model
 
 
     public function tours(){
-        return Tour::where('agent_id',$this->id) ;
+        return Tour::where('agent_id',$this->id)->get() ;
     }
     public function user(){
         return User::find($this->user_id) ;
